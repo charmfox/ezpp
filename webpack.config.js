@@ -48,8 +48,9 @@ if (PROD) {
 
 module.exports = {
   entry: {
-    popup: './src/js/index.js',
+    extension: './src/js/index.js',
     changelog: './src/js/changelog.js',
+    background: './src/js/background.js',
   },
   output: {
     path: __dirname,
