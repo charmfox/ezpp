@@ -15,6 +15,17 @@
   "background": {
     "scripts": ["background.js"]
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.ppy.sh/s/*",
+        "http://*.ppy.sh/s/*",
+        "https://*.ppy.sh/b/*",
+        "http://*.ppy.sh/b/*"
+      ],
+      "js": ["extension.js"]
+    }
+  ],
   "page_action": {
     "default_icon": "icon48.png"
   },

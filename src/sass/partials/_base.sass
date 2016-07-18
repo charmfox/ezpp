@@ -7,16 +7,20 @@
   padding: 2px
   background-color: #fff
   width: 420px
-  height: fit-content
-  box-shadow: 0 2px 1px rgba(0,0,0,0.05)  
-  z-index: -1
-  opacity: 0
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out
-  transform: translateY(-1em)
-  &.active
-    transform: none
-    opacity: 1
-    z-index: auto
+  box-shadow: 0 2px 1px rgba(0,0,0,0.05)
+
+  // Enabling animations
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out
+  display: block
+  opacity: 1
+  transform: translateY(0em)
+  &.disabled
+    z-index: -9999
+  &.hidden
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out
+    opacity: 0
+    transform: translateY(-0.25em)  
+
   *
     margin: 0
     padding: 0
@@ -38,15 +42,16 @@
     overflow: hidden
     font-size: 14px
     width: 30em
+    min-height: 32em
     background-image: url('../../assets/background.png')
     // For preloading
     &>*
       transition: opacity 0.2s ease-out
     &>.spinner
       opacity: 0
-    &.preloading>*
+    &.loading>*
       opacity: 0
-    &.preloading>.spinner
+    &.loading>.spinner
       opacity: 1
     &.error>*
       filter: grayscale(1) blur(2px)
