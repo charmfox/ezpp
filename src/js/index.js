@@ -7,6 +7,7 @@ import OsuParser from 'osu-parser-web';
 import { Extension } from './containers';
 import reducers from './reducers';
 import { setBeatmap, setBeatmapCover, setLoading, setShouldCalculate } from './actions';
+import debug from './debug';
 
 const store = createStore(
   reducers
@@ -28,6 +29,7 @@ let beatmapId = null;
 let isUnranked = false;
 
 if (isOldSite) {
+  debug('Old site detected.');
   // For the old (current) version of the site ID values must be found from the page source.
   promise = fetch(url)
   .then(res => res.text())
@@ -46,23 +48,29 @@ if (isOldSite) {
     return fetch(`https://osu.ppy.sh/osu/${beatmapId}`);
   });
 } else {
+  debug('New site detected.');
   beatmapSetId = match[3];
   beatmapId = match[4];
   promise = fetch(`https://osu.ppy.sh/osu/${beatmapId}`);
 }
 
+debug('Fetching beatmap.');
+
 promise.then(res => res.text())
 .then(OsuParser.parseContent)
 .then(beatmap => {
+  debug('Beatmap fetched.');
+
   const cleanBeatmap = Object.assign({}, beatmap, { Mode: beatmap.Mode || '0' });
 
   if (cleanBeatmap.Mode !== '0') {
     throw Error('Unsupported gamemode :(');
   }
-
+  debug('Beatmap: ', cleanBeatmap);
   store.dispatch(setBeatmap(cleanBeatmap));
 
   // Preload beatmap cover
+  debug('Preloading beatmap cover.');
   const coverUrl = isUnranked
     ? `https://b.ppy.sh/thumb/${beatmapSetId}l.jpg`
     : `https://assets.ppy.sh//beatmaps/${beatmapSetId}/covers/cover.jpg`;
@@ -76,6 +84,7 @@ promise.then(res => res.text())
   });
 })
 .then(cover => {
+  debug('Beatmap cover loaded (or not).');
   if (cover) {
     store.dispatch(setBeatmapCover(cover.src));
   }
