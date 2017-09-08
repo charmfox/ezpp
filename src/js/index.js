@@ -1,5 +1,4 @@
 require('./notifications');
-require('./analytics');
 
 import OsuParser from 'osu-parser-web';
 import { PPCalculator, Beatmap } from 'osu-pp-calculator';
