@@ -64,9 +64,6 @@ const calculate = () => {
     const beatmap = Beatmap.fromOsuParserObject(cleanBeatmap);
     const pp = PPCalculator.calculate(beatmap, accuracy, modifiers, combo, misses);
 
-    // Track results
-    _gaq.push(['_trackEvent', pageInfo.beatmapId, 'calculated']);
-
     resultElement.innerText = `That's about ${Math.round(pp)}pp.`;
     resultElement.classList.toggle('hidden', false);
   } catch (err) {
