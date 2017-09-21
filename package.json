@@ -1,6 +1,6 @@
 {
   "name": "ezpp!",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Browser extension for calculating pp!",
   "main": "src/js/index.js",
   "dependencies": {
