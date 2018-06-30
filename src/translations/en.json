@@ -1,10 +1,10 @@
 {
-  "error-occured": "An error prevented the extension from working properly: ",
-  "version-update-message": "You are now using ezpp! v{0}",
-  "changelog": "changelog",
+  "error-occured": "Bir hata uzantının düzgün çalışmasını engelledi: ",
+  "version-update-message": "ezpp kullanıyorsun! v{0}",
+  "changelog": "Sürüm notları",
   "accuracy": "Accuracy",
   "combo": "Combo",
-  "empty-fc": "(empty = FC)",
+  "empty-fc": "(boş = FC)",
   "misses": "Misses",
   "mod-hidden": "Hidden",
   "mod-hardrock": "HardRock",
@@ -14,8 +14,8 @@
   "mod-easy": "Easy",
   "mod-halftime": "HalfTime",
   "mod-spunout": "SpunOut",
-  "language": "Language",
-  "settings": "Settings",
+  "language": "Dil",
+  "settings": "Ayarlar",
   "analytics": "Send anonymous analytics data",
-  "result": "That's about {0}pp."
+  "result": "Bu yaklaşık {0}pp."
 }
